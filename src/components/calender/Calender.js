@@ -12,13 +12,13 @@ function Calender() {
         <SingleCell special>Month 2023</SingleCell>
         <SingleCell>{">"}</SingleCell>
         <SingleCell>{">>"}</SingleCell>
-        <SingleCell>Monday</SingleCell>
-        <SingleCell>Tuesday</SingleCell>
-        <SingleCell>Wednesday</SingleCell>
-        <SingleCell>Thursday</SingleCell>
-        <SingleCell>Friday</SingleCell>
-        <SingleCell>Saturday</SingleCell>
-        <SingleCell>Sunday</SingleCell>
+        <SingleCell>Mon</SingleCell>
+        <SingleCell>Tue</SingleCell>
+        <SingleCell>Wed</SingleCell>
+        <SingleCell>Thur</SingleCell>
+        <SingleCell>Fri</SingleCell>
+        <SingleCell>Sat</SingleCell>
+        <SingleCell>Sun</SingleCell>
       </div>
     </div>
   )
