@@ -1,0 +1,19 @@
+.main-calender-wrapper{
+   min-width: 600px;
+    border: 1px solid black;
+  
+
+}
+
+.grid-template{
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.display-month{
+    grid-column: span 3 ;
+    
+}
