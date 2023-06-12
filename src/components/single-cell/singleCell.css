@@ -9,6 +9,7 @@
     border-right: 1px solid rgba(0, 0, 0, 0.171) ;
     border-left: 1px solid rgba(0, 0, 0, 0.171) ;
     cursor: pointer;
+    transition: transform 0.3s ease
 }
 
 .display-regular{
@@ -22,6 +23,20 @@
     border-left: 1px solid rgba(0, 0, 0, 0.171) ;
     cursor: pointer;
     font-size: 1,2rem;
+    transition: transform 0.3s ease
     
     
+}
+
+.display-regular:hover, .display-special:hover{
+    background-color: rgba(46, 122, 209, 0.600);
+    transform: scale(1.1);
+    border-color: transparent;
+}
+
+
+.display-regular:active, .display-special:active{
+    background-color: rgba(46, 122, 209, 0.900);
+    transform: scale(1.1);
+    border-color: transparent;
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import '../calender/calender.css'
 import SingleCell from '../single-cell/SingleCell'
-import {differenceInDays, endOfMonth, startOfMonth, subMonths, addMonths, format} from 'date-fns'
+import {differenceInDays, endOfMonth, startOfMonth, subMonths, addMonths, format, setDate} from 'date-fns'
 
 
 const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun']
@@ -26,7 +26,7 @@ function Calender({value,onChange}) {
 
 const renderDaysNumber = (days) => {
   return days.map((day,index)=>{
-    return <SingleCell key={index}>{day}</SingleCell>
+    return <SingleCell onClick={()=>handleClickOnDay(day)} key={index}>{day}</SingleCell>
   })
 }
 
@@ -35,6 +35,10 @@ const renderEmptySingleCell = (days) => {
     return <SingleCell key={index}></SingleCell>
   })
 }
+
+const handleClickOnDay = ((date)=>{
+    onChange(setDate(value, date))
+})
 
   const nextMonth = () => onChange(addMonths(value,1))
   const nextYear = () => onChange(addMonths(value,12))
