@@ -1,12 +1,11 @@
-import './singleCell.css'
+import "./singleCell.css";
 
-function SingleCell({ className, special, style, children, onClick}) {
-
+function SingleCell({ className, children, onClick }) {
   return (
     <div className={className} onClick={onClick}>
       {children}
     </div>
-  )
+  );
 }
 
-export default SingleCell
+export default SingleCell;

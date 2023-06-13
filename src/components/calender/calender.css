@@ -1,25 +1,19 @@
-.main-calender-wrapper{
-    min-width: 400px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
-    background-color: #f5f5f5;
-    
-
-
-  
-
+.main-calender-wrapper {
+  min-width: 400px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
+  background-color: #f5f5f5;
+  margin-top: 20px;
 }
 
-.grid-template{
-    display: grid;
-    grid-template-columns: repeat(7, minmax(0, 1fr));
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+.grid-template {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
-.display-month{
-    grid-column: span 3 ;
-    
+.display-month {
+  grid-column: span 3;
 }
-
