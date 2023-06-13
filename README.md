@@ -15,7 +15,6 @@ The goal of this project was to create the reusable Calendar component.
 - React
 - CSS
 - JavaScript
-- React-Toastify
 - GH-Pages
 - HTML5
 - Date fns
