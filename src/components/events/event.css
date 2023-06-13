@@ -12,16 +12,16 @@
 
 h2 {
   text-align: center;
-    color:rgba(46, 122, 209, 0.6);
-    /* border-bottom: 1px solid black; */
-    padding: 5px 0;
-    /* border-radius: 20px; */
+  color: rgba(46, 122, 209, 0.6);
+  /* border-bottom: 1px solid black; */
+  padding: 5px 0;
+  /* border-radius: 20px; */
 }
 
-.event-date{
-    letter-spacing: 1.5px;
-    margin-bottom: 10px;
-    color:rgba(46, 122, 209, 0.6);
+.event-date {
+  letter-spacing: 1.5px;
+  margin-bottom: 10px;
+  color: rgba(46, 122, 209, 0.6);
 }
 
 .event-wrapper ol {
@@ -30,28 +30,25 @@ h2 {
 }
 
 .event-wrapper {
-    max-height: 500px;
-    overflow: auto;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-    padding: 10px;
-    border-top: 1px solid rgba(0, 0, 0, 0.2);
-  }
-
-.event-wrapper li:last-child{
-    text-decoration: none;
-    border-radius: 0px 0px 20px 20px;
-    
+  max-height: 500px;
+  overflow: auto;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-
-.event-details > h3{
-    padding-left: 30px;
-    font-size: 18px;
-
+.event-wrapper li:last-child {
+  text-decoration: none;
+  border-radius: 0px 0px 20px 20px;
 }
 
-.event-details > p{
-    padding-left: 40px;
-    font-size: 14px;
+.event-details > h3 {
+  padding-left: 30px;
+  font-size: 14px;
+}
+
+.event-details > p {
+  padding-left: 45px;
+  font-size: 14px;
 }
 

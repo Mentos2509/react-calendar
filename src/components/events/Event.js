@@ -8,7 +8,7 @@ function Event({ events }) {
   return (
     <div className="event-wrapper">
     <div className="event-header">
-      <h2>Events</h2>
+      <h2>Your events</h2>
     </div>
     <div className="event-list">
       <ol>
