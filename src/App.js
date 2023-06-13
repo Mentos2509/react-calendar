@@ -47,12 +47,14 @@ function App() {
       />
       <Event events={event} />
       <form onSubmit={handleSubmit}>
+      <span>From</span>
         <TimeField
           className={"time-field"}
           required
           value={eventTime}
           onChange={(e) => setEventTime(e.target.value)}
         ></TimeField>
+        <span>To</span>
         <TimeField
          className={"time-field"}
           required

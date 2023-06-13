@@ -68,11 +68,15 @@ input[type="time"] {
     transition: transform 0.3s ease
   }
 
-  .time-field:focus, .input:focus{
+  .time-field:focus{
     transform: scale(1.1);
+    outline: none;
     
   }
 
-  .time-field:active{
-    border-color: rgba(46, 122, 209, 0.3);
+  .input:focus{
+    transform: scale(1.02);
+    outline: none;
+    border-right: rgba(46, 122, 209, 0.3);
   }
+
