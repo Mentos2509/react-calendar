@@ -18,6 +18,7 @@ The goal of this project was to create the reusable Calendar component.
 - GH-Pages
 - HTML5
 - Date fns
+- react-simple-timefield
 
 ##### How run this project :
 

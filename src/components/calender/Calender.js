@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../calender/calender.css";
 import SingleCell from "../single-cell/SingleCell";
 import {
@@ -11,7 +11,10 @@ import {
   setDate,
 } from "date-fns";
 
-function Calender({ value, onChange }) {
+function Calender({ value, onChange, event, setEvent, eventDescription, EventTitle }) {
+  
+
+
   const beginningOfTheMonth = startOfMonth(value);
   const endOfTheMonth = endOfMonth(value);
   const numberOfDaysInAMonth =
@@ -75,9 +78,10 @@ function Calender({ value, onChange }) {
 
   const handleClickOnDay = (date) => {
     onChange(setDate(value, date));
+    // setEvent([...event, {id:1, name: "ugotować ziemniaki" ,date:value }])
   };
 
-  console.log(value)
+ 
 
   const nextMonth = () => onChange(addMonths(value, 1));
   const nextYear = () => onChange(addMonths(value, 12));

@@ -7,3 +7,72 @@
   height: 100vh;
   background-color: #f5f5f55d;
 }
+
+
+input[type="time"] {
+    
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: #fff;
+    color: #333;
+  }
+  
+  input[type="time"]:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #c0d6f9;
+  }
+  
+
+  input[type="time"]::-webkit-calendar-picker-indicator {
+    padding: 2px;
+    background-color: #ccc;
+    color: #fff;
+    border-radius: 4px;
+  }
+
+  .time-field{
+    padding: 5px;
+    min-width: 60px;
+    margin: 10px;
+    border-radius: 10px;
+    text-align: center;
+    border-color: rgba(46, 122, 209, 0.3);
+    cursor: pointer;
+    transition: transform 0.3s ease
+    
+  }
+
+  .input {
+    border-radius: 10px 0 0 10px;
+    border-right: transparent;
+    text-align: center;
+    padding: 5px;
+    border-color: rgba(46, 122, 209, 0.3);
+    cursor: pointer;
+    transition: transform 0.3s ease
+  }
+
+  button{
+    border-radius: 0 10px 10px 0;
+    border-left: transparent;
+    text-align: center;
+    padding: 5px;
+    border-color: rgba(46, 122, 209, 0.3);
+    background-color:rgba(46, 122, 209, 0.3);
+    cursor: pointer;
+    transition: transform 0.3s ease
+  }
+
+  .time-field:focus, .input:focus{
+    transform: scale(1.1);
+    
+  }
+
+  .time-field:active{
+    border-color: rgba(46, 122, 209, 0.3);
+  }
