@@ -1,0 +1,9 @@
+.event-wrapper {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid black;
+    min-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

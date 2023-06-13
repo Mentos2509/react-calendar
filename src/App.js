@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import Calender from "./components/calender/Calender";
 import { format } from "date-fns";
+import Event from "./components/events/Event"
 
 function App() {
   const [currentDate, SetCurrentDate] = useState(new Date());
@@ -12,6 +13,7 @@ function App() {
         <p>{format(currentDate, "dd LLLL yyyy")}</p>
       </div>
       <Calender value={currentDate} onChange={SetCurrentDate} />
+      {/* <Event/> */}
     </div>
   );
 }

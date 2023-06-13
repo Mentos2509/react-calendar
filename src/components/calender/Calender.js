@@ -77,6 +77,8 @@ function Calender({ value, onChange }) {
     onChange(setDate(value, date));
   };
 
+  console.log(value)
+
   const nextMonth = () => onChange(addMonths(value, 1));
   const nextYear = () => onChange(addMonths(value, 12));
   const previousMonth = () => onChange(subMonths(value, 1));
