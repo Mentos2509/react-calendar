@@ -29,6 +29,3 @@ The goal of this project was to create the reusable Calendar component.
 
 - **Patryk Mąkosa** [GitHub](https://github.com/Mentos2509), [LinkedIn](https://www.linkedin.com/in/patryk-m%C4%85kosa/)
 
-Used npms:
-
--date fns
