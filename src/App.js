@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./App.css";
 import Calender from "./components/calender/Calender";
 import { format } from "date-fns";
@@ -15,19 +15,19 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newEvent ={
+    const newEvent = {
       id: uuidv4(),
       event_time: eventTime,
       event_timeTo: eventTimeTo,
       event_description: eventDescription,
       event_date: currentDate,
-    }
+    };
     const updatedEvents = [...event, newEvent];
     setEvent(updatedEvents);
     setEventTime("");
     setEventDescription("");
     setEventTimeTo("");
-    localStorage.setItem('events', JSON.stringify(updatedEvents));
+    localStorage.setItem("events", JSON.stringify(updatedEvents));
   };
 
   // useEffect(() => {
