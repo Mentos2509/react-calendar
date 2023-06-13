@@ -1,7 +1,6 @@
 import './singleCell.css'
 
-function SingleCell({ special, children, onClick}) {
-    const className = special? 'display-special' : 'display-regular';
+function SingleCell({ className, special, style, children, onClick}) {
 
   return (
     <div className={className} onClick={onClick}>

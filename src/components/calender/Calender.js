@@ -4,11 +4,6 @@ import SingleCell from '../single-cell/SingleCell'
 import {differenceInDays, endOfMonth, startOfMonth, subMonths, addMonths, format, setDate} from 'date-fns'
 
 
-const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun']
-const renderDaysNames = (daysOfWeek) => {
-  return daysOfWeek.map((day, index)=>{
-    return <SingleCell key={index}>{day}</SingleCell>
-})}
 
 
 
@@ -22,19 +17,36 @@ function Calender({value,onChange}) {
   const arrayOfEmptySingleCell = Array.from({length :numberOfFirstDayInAMonth}, (_,i)=> i + 1)
   const remainingDaysInCalender = 6 - numberOfLastDayInAMonth
   const arrayRemainingDaysInCalender = Array.from({length :remainingDaysInCalender}, (_,i)=> i + 1)
+  
+  
+  const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun']
+  const renderDaysNames = (daysOfWeek) => {
+    return daysOfWeek.map((day, index)=>{
+      return <SingleCell className={'display-week-day'} key={index}>{day}</SingleCell>
+  })}
 
 
 const renderDaysNumber = (days) => {
-  return days.map((day,index)=>{
-    return <SingleCell onClick={()=>handleClickOnDay(day)} key={index}>{day}</SingleCell>
-  })
-}
+  return days.map((day, index) => {
+    const isWeekend = [0, 6].includes(new Date(value.getFullYear(), value.getMonth(), day).getDay());
+    const cellClassName = isWeekend ? "display-weekend" : "display-regular";
+    const isActive = day === value.getDate()
+    const cellClass = isActive ? `${cellClassName} active-day` : cellClassName;
+    return (
+      <SingleCell className={cellClass} onClick={() => handleClickOnDay(day)} key={index}>
+        {day}
+      </SingleCell>
+    );
+  });
+};
 
 const renderEmptySingleCell = (days) => {
   return days.map((index)=>{
-    return <SingleCell key={index}></SingleCell>
+    return <SingleCell className={"display-regular"} key={index}></SingleCell>
   })
 }
+
+
 
 const handleClickOnDay = ((date)=>{
     onChange(setDate(value, date))
@@ -49,11 +61,11 @@ const handleClickOnDay = ((date)=>{
   return (
     <div className='main-calender-wrapper'>
       <div className='grid-template'>
-        <SingleCell onClick={previousYear}>{"<<"}</SingleCell>
-        <SingleCell onClick={previousMonth}>{"<"}</SingleCell>
-        <SingleCell special>{format(value, 'LLLL yyyy')}</SingleCell>
-        <SingleCell onClick={nextMonth}>{">"}</SingleCell>
-        <SingleCell onClick={nextYear}>{">>"}</SingleCell>
+        <SingleCell className={"display-regular"} onClick={previousYear}>{"<<"}</SingleCell>
+        <SingleCell className={"display-regular"} onClick={previousMonth}>{"<"}</SingleCell>
+        <SingleCell className={"display-special"} special>{format(value, 'LLLL yyyy')}</SingleCell>
+        <SingleCell className={"display-regular"} onClick={nextMonth}>{">"}</SingleCell>
+        <SingleCell className={"display-regular"} onClick={nextYear}>{">>"}</SingleCell>
         {renderDaysNames(daysOfWeek)}
         {renderEmptySingleCell(arrayOfEmptySingleCell)}
         {renderDaysNumber(arrayOfDaysInAMonth)}
