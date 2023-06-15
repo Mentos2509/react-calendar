@@ -20,6 +20,14 @@ The goal of this project was to create the reusable Calendar component.
 - Date fns
 - react-simple-timefield
 
+
+##### Remaining features for the project :
+
+- Add "Remove Event" feature
+- Add "Edit Event" feature
+- Add daily display of events
+- Show icon on the calender day if there is pending event
+
 ##### How run this project :
 
     1. Copy repository.
