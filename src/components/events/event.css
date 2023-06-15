@@ -36,8 +36,14 @@ h2 {
   border-top: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.event-wrapper li:last-child {
+.event-wrapper .event-list li {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 20px 0px;
+}
+
+.event-list li:last-child {
   text-decoration: none;
+  border: none;
   border-radius: 0px 0px 20px 20px;
 }
 
