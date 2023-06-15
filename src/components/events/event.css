@@ -1,12 +1,11 @@
 .event-wrapper {
-  margin-top: 20px;
+  margin: 20px 20px 0 20px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  min-width: 400px;
+  min-width: 360px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
   background-color: #f5f5f5;
-  margin: 20px 0px;
   border-radius: 20px;
 }
 
