@@ -13,6 +13,13 @@ function App() {
   const [eventTime, setEventTime] = useState("00:00");
   const [eventTimeTo, setEventTimeTo] = useState("00:00");
 
+  const handleDelete = (eventID) => {
+    const updatedEvents = event.filter((element) => element.id !== eventID);
+    console.log(updatedEvents);
+    setEvent(updatedEvents);
+    localStorage.setItem("events", JSON.stringify(updatedEvents));
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const newEvent = {
@@ -35,13 +42,11 @@ function App() {
     if (storedEvents) {
       const parsedEvents = JSON.parse(storedEvents).map((event) => ({
         ...event,
-        event_date: parseISO(event.event_date)
+        event_date: parseISO(event.event_date),
       }));
       setEvent(parsedEvents);
     }
   }, []);
-
-
 
   return (
     <div className="App">
@@ -56,7 +61,7 @@ function App() {
         eventDescription={eventDescription}
         eventTime={eventTime}
       />
-      <Event events={event} />
+      <Event events={event} handleDelete={handleDelete} />
       <form onSubmit={handleSubmit}>
         <div>
           {" "}

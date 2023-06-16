@@ -21,6 +21,21 @@ h2 {
   letter-spacing: 1.5px;
   margin-bottom: 10px;
   color: rgba(46, 122, 209, 0.6);
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+.icon-div{
+ padding: 0 10px;
+ display: flex;
+ justify-content: space-between;
+ width: 65px;
+}
+
+.icon{
+  height: 24px;
+  cursor: pointer;
 }
 
 .event-wrapper ol {

@@ -19,12 +19,13 @@ The goal of this project was to create the reusable Calendar component.
 - HTML5
 - Date fns
 - react-simple-timefield
+- React Icons
 
 
 ##### Remaining features for the project :
 
 - ~~Save events to Local Storage~~
-- Add "Remove Event" feature
+- ~~Add "Remove Event" feature~~
 - Add "Edit Event" feature
 - Add daily display of events
 - Show icon on the calender day if there is pending event
