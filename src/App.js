@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import Calender from "./components/calender/Calender";
-import { format } from "date-fns";
+import { format, parseISO } from "date-fns";
 import Event from "./components/events/Event";
 import { v4 as uuidv4 } from "uuid";
 import TimeField from "react-simple-timefield";
@@ -24,20 +24,24 @@ function App() {
     };
     const updatedEvents = [...event, newEvent];
     setEvent(updatedEvents);
-    setEventTime("");
+    setEventTime("00:00");
     setEventDescription("");
-    setEventTimeTo("");
+    setEventTimeTo("00:00");
     localStorage.setItem("events", JSON.stringify(updatedEvents));
   };
 
-  // useEffect(() => {
-  //   const storedEvents = localStorage.getItem('events');
-  //   if (storedEvents) {
-  //     setEvent(JSON.parse(storedEvents));
-  //   }
-  // }, []);
+  useEffect(() => {
+    const storedEvents = localStorage.getItem("events");
+    if (storedEvents) {
+      const parsedEvents = JSON.parse(storedEvents).map((event) => ({
+        ...event,
+        event_date: parseISO(event.event_date)
+      }));
+      setEvent(parsedEvents);
+    }
+  }, []);
 
-  console.log(event);
+
 
   return (
     <div className="App">
