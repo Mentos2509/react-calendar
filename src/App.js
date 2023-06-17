@@ -5,6 +5,7 @@ import { format, parseISO } from "date-fns";
 import Event from "./components/events/Event";
 import { v4 as uuidv4 } from "uuid";
 import TimeField from "react-simple-timefield";
+import DailyTasks from "./components/dailyTasks/DailyTasks";
 
 function App() {
   const [currentDate, SetCurrentDate] = useState(new Date());
@@ -62,6 +63,7 @@ function App() {
         eventTime={eventTime}
       />
       <Event events={event} handleDelete={handleDelete} />
+      <DailyTasks events={event} selectedDate={currentDate} />
       <form onSubmit={handleSubmit}>
         <div>
           {" "}
