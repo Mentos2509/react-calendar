@@ -5,7 +5,7 @@ import { format, parseISO } from "date-fns";
 import Event from "./components/events/Event";
 import { v4 as uuidv4 } from "uuid";
 import TimeField from "react-simple-timefield";
-import DailyTasks from "./components/dailyTasks/DailyTasks";
+import DailyTasks from "./components/dailyTasks/DailyTasks"
 
 function App() {
   const [currentDate, SetCurrentDate] = useState(new Date());
@@ -14,6 +14,8 @@ function App() {
   const [eventTime, setEventTime] = useState("00:00");
   const [eventTimeTo, setEventTimeTo] = useState("00:00");
   const [monthOverview, setMonthOverview] = useState(false);
+  const todaysDate = format(new Date(), "dd LLLL yyyy")
+  console.log(todaysDate)
 
   const handleDelete = (eventID) => {
     const updatedEvents = event.filter((element) => element.id !== eventID);
@@ -53,7 +55,7 @@ function App() {
   return (
     <div className="App">
       <div>
-        <p>{format(currentDate, "dd LLLL yyyy")}</p>
+        <p>{todaysDate}</p>
       </div>{" "}
       <Calender
         setMonthOverview={setMonthOverview}
@@ -67,10 +69,12 @@ function App() {
       {monthOverview ? (
         <Event events={event} handleDelete={handleDelete} />
       ) : (
-        <DailyTasks events={event} selectedDate={currentDate} />
+        <DailyTasks
+          events={event}
+          selectedDate={currentDate}
+          handleDelete={handleDelete}
+        />
       )}
-      {/* 
-      <Event events={event} handleDelete={handleDelete} /> */}
       <form onSubmit={handleSubmit}>
         <div>
           {" "}

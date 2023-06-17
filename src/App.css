@@ -1,7 +1,8 @@
 .App {
   box-sizing: border-box;
   display: flex;
-  justify-content: center;
+  justify-content:flex-start;
+  padding-top: 28px;
   align-items: center;
   flex-direction: column;
   height: 100vh;

@@ -30,7 +30,7 @@
 - ~~Save events to Local Storage~~
 - ~~Add "Remove Event" feature~~
 - Add "Edit Event" feature
-- Add daily display of events
+- ~~Add daily display of events~~
 - Show icon on the calender day if there is pending event
 
 ##### How run this project :
