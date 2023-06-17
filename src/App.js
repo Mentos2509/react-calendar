@@ -13,6 +13,7 @@ function App() {
   const [eventDescription, setEventDescription] = useState("");
   const [eventTime, setEventTime] = useState("00:00");
   const [eventTimeTo, setEventTimeTo] = useState("00:00");
+  const [monthOverview, setMonthOverview] = useState(false);
 
   const handleDelete = (eventID) => {
     const updatedEvents = event.filter((element) => element.id !== eventID);
@@ -53,17 +54,23 @@ function App() {
     <div className="App">
       <div>
         <p>{format(currentDate, "dd LLLL yyyy")}</p>
-      </div>
+      </div>{" "}
       <Calender
+        setMonthOverview={setMonthOverview}
         value={currentDate}
         events={event}
         setEvent={setEvent}
         onChange={SetCurrentDate}
         eventDescription={eventDescription}
         eventTime={eventTime}
-      />
-      <Event events={event} handleDelete={handleDelete} />
-      <DailyTasks events={event} selectedDate={currentDate} />
+      />{" "}
+      {monthOverview ? (
+        <Event events={event} handleDelete={handleDelete} />
+      ) : (
+        <DailyTasks events={event} selectedDate={currentDate} />
+      )}
+      {/* 
+      <Event events={event} handleDelete={handleDelete} /> */}
       <form onSubmit={handleSubmit}>
         <div>
           {" "}

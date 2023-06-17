@@ -6,7 +6,10 @@
 
 ---
 
-The goal of this project was to create the reusable Calendar component.
+##### The goal of this project was to create the reusable Calendar component. Little guidelines for the project:
+- all events are saved to local storage
+- to open the monthly preview of events, click on the month
+- to open the daily preview of events, click on the day you are interested in
 
 ##### Used technologies:
 

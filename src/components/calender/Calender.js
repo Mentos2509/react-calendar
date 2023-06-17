@@ -11,7 +11,7 @@ import {
   setDate,
 } from "date-fns";
 
-function Calender({ value, onChange }) {
+function Calender({ value, onChange, setMonthOverview }) {
   const beginningOfTheMonth = startOfMonth(value);
   const endOfTheMonth = endOfMonth(value);
   const numberOfDaysInAMonth =
@@ -43,6 +43,10 @@ function Calender({ value, onChange }) {
     });
   };
 
+  const handleChangeOverview = () => {
+    setMonthOverview(true);
+  };
+
   const renderDaysNumber = (days) => {
     return days.map((day, index) => {
       const isWeekend = [0, 6].includes(
@@ -53,6 +57,7 @@ function Calender({ value, onChange }) {
       const cellClass = isActive
         ? `${cellClassName} active-day`
         : cellClassName;
+        
       return (
         <SingleCell
           className={cellClass}
@@ -75,6 +80,7 @@ function Calender({ value, onChange }) {
 
   const handleClickOnDay = (date) => {
     onChange(setDate(value, date));
+    setMonthOverview(false)
   };
 
   const nextMonth = () => onChange(addMonths(value, 1));
@@ -91,7 +97,7 @@ function Calender({ value, onChange }) {
         <SingleCell className={"display-regular"} onClick={previousMonth}>
           {"<"}
         </SingleCell>
-        <SingleCell className={"display-special"} special>
+        <SingleCell className={"display-special"} special onClick={()=>handleChangeOverview()}>
           {format(value, "LLLL yyyy")}
         </SingleCell>
         <SingleCell className={"display-regular"} onClick={nextMonth}>
