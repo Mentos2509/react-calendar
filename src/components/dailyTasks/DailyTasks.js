@@ -2,7 +2,7 @@ import "../dailyTasks/dailyTasks.css";
 import { format } from "date-fns";
 import { CiCircleRemove, CiEdit } from "react-icons/ci";
 
-function DailyTasks({ events, selectedDate, handleDelete }) {
+function DailyTasks({ events, selectedDate, handleDelete, handleEdit }) {
   const filteredEvents = events.filter(
     (event) => event.event_date.toDateString() === selectedDate?.toDateString()
   );
@@ -17,11 +17,16 @@ function DailyTasks({ events, selectedDate, handleDelete }) {
       ) : (
         <ul>
           {filteredEvents.map((event) => (
-            <li key={event.id}  className="event-li">
+            <li key={event.id} className="event-li">
               <div className="event-date">
-                <h3>{event.event_time} - {event.event_timeTo}</h3>
+                <h3>
+                  {event.event_time} - {event.event_timeTo}
+                </h3>
                 <div className="icon-div">
-                  <CiEdit className="icon" />
+                  <CiEdit
+                    className="icon"
+                    onClick={() => handleEdit(event.id)}
+                  />
                   <CiCircleRemove
                     className="icon"
                     onClick={() => handleDelete(event.id)}

@@ -2,7 +2,7 @@ import "./event.css";
 import { format } from "date-fns";
 import { CiCircleRemove, CiEdit } from "react-icons/ci";
 
-function Event({ events, handleDelete }) {
+function Event({ events, handleDelete, handleEdit }) {
   const sortedEvents = events.sort((a, b) => a.event_date - b.event_date);
 
   return (
@@ -14,9 +14,14 @@ function Event({ events, handleDelete }) {
             return (
               <li key={event.id}>
                 <div className="event-date">
-                  <h2 className="date-div">{format(event.event_date, "dd LLLL yyyy")}</h2>
+                  <h2 className="date-div">
+                    {format(event.event_date, "dd LLLL yyyy")}
+                  </h2>
                   <div className="icon-div">
-                    <CiEdit className="icon" />
+                    <CiEdit
+                      className="icon"
+                      onClick={() => handleEdit(event.id)}
+                    />
                     <CiCircleRemove
                       className="icon"
                       onClick={() => handleDelete(event.id)}
@@ -24,7 +29,9 @@ function Event({ events, handleDelete }) {
                   </div>
                 </div>
                 <div className="event-details">
-                  <h3> {event.event_time} - {event.event_timeTo} </h3>
+                  <h3>
+                    {event.event_time} - {event.event_timeTo}{" "}
+                  </h3>
                   <p>{event.event_description}</p>
                 </div>
               </li>

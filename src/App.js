@@ -1,11 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./App.css";
 import Calender from "./components/calender/Calender";
 import { format, parseISO } from "date-fns";
 import Event from "./components/events/Event";
 import { v4 as uuidv4 } from "uuid";
-import TimeField from "react-simple-timefield";
-import DailyTasks from "./components/dailyTasks/DailyTasks"
+import DailyTasks from "./components/dailyTasks/DailyTasks";
+import EditTaskFrom from "./components/EditTaskForm/EditTaskFrom";
+import TaskForm from "./components/TaskForm/TaskForm";
+
 
 function App() {
   const [currentDate, SetCurrentDate] = useState(new Date());
@@ -14,14 +16,22 @@ function App() {
   const [eventTime, setEventTime] = useState("00:00");
   const [eventTimeTo, setEventTimeTo] = useState("00:00");
   const [monthOverview, setMonthOverview] = useState(false);
-  const todaysDate = format(new Date(), "dd LLLL yyyy")
-  console.log(todaysDate)
+  const [isEditFormOpen, setEditFormOpen] = useState(false);
+  const [selectedId, setSelectedId] = useState(null);
+
+ 
+  const todaysDate = format(new Date(), "dd LLLL yyyy");
 
   const handleDelete = (eventID) => {
     const updatedEvents = event.filter((element) => element.id !== eventID);
-    console.log(updatedEvents);
     setEvent(updatedEvents);
     localStorage.setItem("events", JSON.stringify(updatedEvents));
+  };
+
+  const handleEdit = (eventID) => {
+    console.log(eventID);
+    setEditFormOpen(true);
+    setSelectedId(eventID);
   };
 
   const handleSubmit = (e) => {
@@ -41,6 +51,30 @@ function App() {
     localStorage.setItem("events", JSON.stringify(updatedEvents));
   };
 
+  const handleSubmitEdit = (e) => {
+    e.preventDefault();
+    const updatedEvents = event.map((element) => {
+      if (selectedId === element.id) {
+        return {
+          id: selectedId,
+          event_time: eventTime,
+          event_timeTo: eventTimeTo,
+          event_description: eventDescription,
+          event_date: currentDate,
+        };
+      }
+      return element;
+    });
+    setEvent(updatedEvents);
+    setEventTime("00:00");
+    setEventDescription("");
+    setEventTimeTo("00:00");
+    setSelectedId(null);
+    setEditFormOpen(false);
+    localStorage.setItem("events", JSON.stringify(updatedEvents));
+  };
+
+
   useEffect(() => {
     const storedEvents = localStorage.getItem("events");
     if (storedEvents) {
@@ -51,6 +85,7 @@ function App() {
       setEvent(parsedEvents);
     }
   }, []);
+
 
   return (
     <div className="App">
@@ -65,47 +100,42 @@ function App() {
         onChange={SetCurrentDate}
         eventDescription={eventDescription}
         eventTime={eventTime}
-      />{" "}
+      />
       {monthOverview ? (
-        <Event events={event} handleDelete={handleDelete} />
+        <Event
+          events={event}
+          handleDelete={handleDelete}
+          handleEdit={handleEdit}
+        />
       ) : (
         <DailyTasks
           events={event}
           selectedDate={currentDate}
           handleDelete={handleDelete}
+          handleEdit={handleEdit}
         />
       )}
-      <form onSubmit={handleSubmit}>
-        <div>
-          {" "}
-          <span>From</span>
-          <TimeField
-            className={"time-field"}
-            required
-            value={eventTime}
-            onChange={(e) => setEventTime(e.target.value)}
-          ></TimeField>{" "}
-          <span>To</span>
-          <TimeField
-            className={"time-field"}
-            required
-            value={eventTimeTo}
-            onChange={(e) => setEventTimeTo(e.target.value)}
-          ></TimeField>
-        </div>
-        <div>
-          {" "}
-          <input
-            className="input"
-            required
-            value={eventDescription}
-            onChange={(e) => setEventDescription(e.target.value)}
-            type="text"
-            placeholder="Event description"
-          ></input>
-          <button>Add Event</button>
-        </div>
-      </form>
+      {isEditFormOpen ? (
+        <EditTaskFrom
+          handleSubmitEdit={handleSubmitEdit}
+          eventDescription={eventDescription}
+          eventTime={eventTime}
+          setEventTime={setEventTime}
+          setEventTimeTo={setEventTimeTo}
+          eventTimeTo={eventTimeTo}
+          setEventDescription={setEventDescription}
+        />
+      ) : (
+        <TaskForm
+          handleSubmit={handleSubmit}
+          eventDescription={eventDescription}
+          eventTime={eventTime}
+          setEventTime={setEventTime}
+          setEventTimeTo={setEventTimeTo}
+          eventTimeTo={eventTimeTo}
+          setEventDescription={setEventDescription}
+        />
+      )}
     </div>
   );
 }
