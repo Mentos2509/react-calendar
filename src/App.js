@@ -51,6 +51,11 @@ function App() {
     localStorage.setItem("events", JSON.stringify(updatedEvents));
   };
 
+  const handleCancel = () => {
+    setEditFormOpen(false);
+    setSelectedId(null);
+  }
+
   const handleSubmitEdit = (e) => {
     e.preventDefault();
     const updatedEvents = event.map((element) => {
@@ -124,6 +129,7 @@ function App() {
           setEventTimeTo={setEventTimeTo}
           eventTimeTo={eventTimeTo}
           setEventDescription={setEventDescription}
+          handleCancel={handleCancel}
         />
       ) : (
         <TaskForm

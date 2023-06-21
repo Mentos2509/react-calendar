@@ -9,6 +9,7 @@ function EditTaskFrom({
   setEventTimeTo,
   eventDescription,
   setEventDescription,
+  handleCancel
 }) {
   return (
     <form onSubmit={handleSubmitEdit}>
@@ -38,7 +39,7 @@ function EditTaskFrom({
           placeholder="Event description"
         ></input>
         <button className="change-event-button">Change Event</button>
-        <button className="cancel-button">Cancel</button>
+        <button onClick={handleCancel} className="cancel-button">Cancel</button>
       </div>
     </form>
   );
