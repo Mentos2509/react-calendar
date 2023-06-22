@@ -105,6 +105,7 @@ function App() {
         onChange={SetCurrentDate}
         eventDescription={eventDescription}
         eventTime={eventTime}
+        event={event}
       />
       {monthOverview ? (
         <Event

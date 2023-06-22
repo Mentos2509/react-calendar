@@ -18,3 +18,14 @@
 .display-month {
   grid-column: span 3;
 }
+
+.dot-event{
+  height: 4px;
+  width: 4px;
+  position: relative;
+  top: 14px;
+  left: 10px;
+  background-color: rgba(46, 122, 209, 0.6); 
+  z-index: 1;
+  
+}

@@ -6,7 +6,7 @@
 
 ---
 
-##### The goal of this project was to create the reusable Calendar component. Little guidelines for the project:
+##### The goal of this project was to create the reusable Calendar component, and improve skills with Date handling. Little guidelines for the project:
 - all events are saved to local storage
 - to open monthly preview of events, click on the month
 - to open daily preview of events, click on the day you are interested in
@@ -31,7 +31,7 @@
 - ~~Add "Remove Event" feature~~
 - ~~Add "Edit Event" feature~~
 - ~~Add daily display of events~~
-- Show icon on the calender day if there is pending event
+- ~~Show icon on the calender day if there is pending event~~
 
 ##### How run this project :
 

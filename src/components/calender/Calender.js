@@ -11,7 +11,7 @@ import {
   setDate,
 } from "date-fns";
 
-function Calender({ value, onChange, setMonthOverview }) {
+function Calender({ value, onChange, setMonthOverview, event }) {
   const beginningOfTheMonth = startOfMonth(value);
   const endOfTheMonth = endOfMonth(value);
   const numberOfDaysInAMonth =
@@ -32,6 +32,7 @@ function Calender({ value, onChange, setMonthOverview }) {
     (_, i) => i + 1
   );
 
+  
   const daysOfWeek = ["Mon", "Tue", "Wed", "Thur", "Fri", "Sat", "Sun"];
   const renderDaysNames = (daysOfWeek) => {
     return daysOfWeek.map((day, index) => {
@@ -53,18 +54,22 @@ function Calender({ value, onChange, setMonthOverview }) {
         new Date(value.getFullYear(), value.getMonth(), day).getDay()
       );
       const cellClassName = isWeekend ? "display-weekend" : "display-regular";
+      const hasEvents = event.some((event) => event.event_date.getDate() === day);
+
       const isActive = day === value.getDate();
       const cellClass = isActive
         ? `${cellClassName} active-day`
         : cellClassName;
-        
+
       return (
         <SingleCell
           className={cellClass}
           onClick={() => handleClickOnDay(day)}
           key={index}
+          hasEvents={hasEvents}
         >
           {day}
+          {hasEvents && <span className="dot-event"></span>}
         </SingleCell>
       );
     });
@@ -80,7 +85,7 @@ function Calender({ value, onChange, setMonthOverview }) {
 
   const handleClickOnDay = (date) => {
     onChange(setDate(value, date));
-    setMonthOverview(false)
+    setMonthOverview(false);
   };
 
   const nextMonth = () => onChange(addMonths(value, 1));
@@ -97,7 +102,11 @@ function Calender({ value, onChange, setMonthOverview }) {
         <SingleCell className={"display-regular"} onClick={previousMonth}>
           {"<"}
         </SingleCell>
-        <SingleCell className={"display-special"} special onClick={()=>handleChangeOverview()}>
+        <SingleCell
+          className={"display-special"}
+          special
+          onClick={() => handleChangeOverview()}
+        >
           {format(value, "LLLL yyyy")}
         </SingleCell>
         <SingleCell className={"display-regular"} onClick={nextMonth}>
